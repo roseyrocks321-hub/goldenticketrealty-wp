@@ -1,0 +1,98 @@
+/**
+ * GTR Speed Optimization v5 - Mobile Image & CSS Fixes
+ * No visual changes. Safe for desktop + mobile.
+ */
+
+// ========== 1. FORCE LAZY LOADING ON ALL IMAGES ==========
+// WordPress 5.5+ adds loading="lazy" by default, but Elementor may strip it.
+// This ensures all images below the fold load lazily.
+add_filter('wp_get_attachment_image_attributes', function($attr) {
+    if (!isset($attr['loading'])) {
+        $attr['loading'] = 'lazy';
+    }
+    return $attr;
+});
+
+// Also force lazy loading on all img tags via content filter (backup)
+add_filter('the_content', function($content) {
+    if (empty($content)) return $content;
+    return preg_replace('/<img([^>]+?)src=/i', '<img$1loading="lazy" src=', $content);
+});
+
+// ========== 2. REMOVE KNOWN ELEMENTOR BLOAT (SAFE ONLY) ==========
+// Dequeue Elementor Icons CSS if not explicitly used on the page
+add_action('wp_enqueue_scripts', function() {
+    // Only remove on frontend, never in admin or Elementor editor
+    if (is_admin() || \Elementor\Plugin::$instance->editor->is_edit_mode()) {
+        return;
+    }
+    
+    // Remove Elementor Icons CSS (safe if you don't use custom icons)
+    wp_dequeue_style('elementor-icons');
+    wp_deregister_style('elementor-icons');
+    
+    // Remove Elementor Animations CSS (safe if no entrance animations used)
+    wp_dequeue_style('elementor-animations');
+    wp_deregister_style('elementor-animations');
+}, 100);
+
+// ========== 3. OPTIMIZE SERVER RESPONSE ==========
+// Enable PHP output compression if available
+if (!ob_get_level() && !headers_sent()) {
+    ob_start('ob_gzhandler');
+}
+
+// ========== 4. PRECONNECT TO CRITICAL DOMAINS ==========
+// Only 2 preconnects max (avoids PageSpeed warning)
+add_action('wp_head', function() {
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+}, 1);
+
+// ========== 5. DEFER NON-CRITICAL SCRIPTS (from v1 - keep these) ==========
+add_filter('script_loader_tag', function($tag, $handle) {
+    $defer_handles = [
+        'elementor-frontend',
+        'elementor-pro-frontend',
+        'elementor-common',
+        'elementor-app-loader',
+        'elementor-sticky',
+        'elementor-waypoints',
+        'elementor-frontend-modules',
+    ];
+    if (in_array($handle, $defer_handles)) {
+        return str_replace(' src=', ' defer src=', $tag);
+    }
+    return $tag;
+}, 10, 2);
+
+add_action('wp_default_scripts', function($scripts) {
+    if (!empty($scripts->registered['jquery-migrate'])) {
+        $scripts->registered['jquery-migrate']->extra['defer'] = true;
+    }
+});
+
+// ========== 6. REMOVE BLOAT (from v1 - keep these) ==========
+add_action('wp_enqueue_scripts', function() {
+    wp_dequeue_script('burst');
+    wp_dequeue_script('burst-statistics');
+    wp_dequeue_script('burst-frontend');
+    wp_dequeue_script('alt-manager');
+    wp_dequeue_script('alt-manager-frontend');
+}, 100);
+
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('admin_print_scripts', 'print_emoji_detection_script');
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('admin_print_styles', 'print_emoji_styles');
+
+add_action('wp_footer', function() {
+    wp_dequeue_script('wp-embed');
+});
+
+add_filter('script_loader_tag', function($tag, $handle) {
+    if (strpos($handle, 'msgsndr') !== false || strpos($tag, 'msgsndr') !== false) {
+        return str_replace(' src=', ' defer src=', $tag);
+    }
+    return $tag;
+}, 10, 2);
