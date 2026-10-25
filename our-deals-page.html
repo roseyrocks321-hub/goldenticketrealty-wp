@@ -1,0 +1,266 @@
+<!-- GTR /our-deals/ Portfolio Page -->
+<style>
+.gtr-deals-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.gtr-deals-section h1 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+.gtr-deals-section .subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+.deals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+@media (max-width: 640px) {
+  .deals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.deal-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.deal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.deal-hero {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+.deal-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.deal-card:hover .deal-hero img {
+  transform: scale(1.03);
+}
+.deal-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #d4a017;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.deal-content {
+  padding: 22px;
+}
+.deal-content h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+}
+.deal-city {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+.deal-scope {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+.deal-ba {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.deal-ba img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.deal-ba-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.deal-cta {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.deal-cta:hover {
+  background: #333;
+  color: #fff !important;
+}
+</style>
+
+<div class="gtr-deals-section">
+  <h1>Properties We've Transformed</h1>
+  <p class="subtitle">Real before &amp; after photos from actual deals in Brevard County, FL. No stock imagery.</p>
+
+  <div class="deals-grid">
+
+    <!-- Deal 1: Nikomas Way -->
+    <div class="deal-card">
+      <div class="deal-hero">
+        <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/001_dsc07366-edit-2_twi_900.jpg" alt="Nikomas Way after renovation - Melbourne Beach, FL" loading="lazy">
+        <span class="deal-badge">Full Reno</span>
+      </div>
+      <div class="deal-content">
+        <h3>Nikomas Way</h3>
+        <div class="deal-city">Melbourne Beach, FL</div>
+        <div class="deal-scope">Complete interior renovation: exposed framing to finished great room, modern staircase, updated kitchen with island, and master suite with en-suite bath.</div>
+        <div class="deal-ba">
+          <div>
+            <div class="deal-ba-label">Before</div>
+            <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/nikomas_12.jpg" alt="Nikomas Way before - framing and construction" loading="lazy">
+          </div>
+          <div>
+            <div class="deal-ba-label">After</div>
+            <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/010_dsc07432-edit_394.jpg" alt="Nikomas Way after - finished interior" loading="lazy">
+          </div>
+        </div>
+        <a href="/contact" class="deal-cta">Discuss Your Project</a>
+      </div>
+    </div>
+
+    <!-- Deal 2: Banana River Dr -->
+    <div class="deal-card">
+      <div class="deal-hero">
+        <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/001__amp2005-edit-2_509-scaled.jpg" alt="Banana River Dr after renovation - Indian Harbour Beach, FL" loading="lazy">
+        <span class="deal-badge">Kitchen &amp; Bath</span>
+      </div>
+      <div class="deal-content">
+        <h3>Banana River Dr</h3>
+        <div class="deal-city">Indian Harbour Beach, FL</div>
+        <div class="deal-scope">Mid-century modern refresh: full kitchen renovation with new cabinetry and countertops, bathroom updates, and exterior curb appeal overhaul.</div>
+        <div class="deal-ba">
+          <div>
+            <div class="deal-ba-label">Before</div>
+            <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/banana-river_10.jpg" alt="Banana River Dr before - original exterior" loading="lazy">
+          </div>
+          <div>
+            <div class="deal-ba-label">After</div>
+            <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/001__amp2005-edit-2_509-scaled.jpg" alt="Banana River Dr after - renovated exterior" loading="lazy">
+          </div>
+        </div>
+        <a href="/contact" class="deal-cta">Discuss Your Project</a>
+      </div>
+    </div>
+
+    <!-- Deal 3: Lakeridge Dr -->
+    <div class="deal-card">
+      <div class="deal-hero">
+        <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/001_i77a5788-edit-2.jpg" alt="Lakeridge Dr after renovation - Melbourne, FL" loading="lazy">
+        <span class="deal-badge">Kitchen Flip</span>
+      </div>
+      <div class="deal-content">
+        <h3>Lakeridge Dr</h3>
+        <div class="deal-city">Melbourne, FL</div>
+        <div class="deal-scope">Ranch-style kitchen and living area transformation: opened floor plan, new cabinetry, countertops, and modern finishes throughout.</div>
+        <div class="deal-ba">
+          <div>
+            <div class="deal-ba-label">Before</div>
+            <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/lakeridge_5.jpg" alt="Lakeridge Dr before - original property" loading="lazy">
+          </div>
+          <div>
+            <div class="deal-ba-label">After</div>
+            <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/001_i77a5788-edit-2.jpg" alt="Lakeridge Dr after - renovated exterior" loading="lazy">
+          </div>
+        </div>
+        <a href="/contact" class="deal-cta">Discuss Your Project</a>
+      </div>
+    </div>
+
+    <!-- Deal 4: Yuma Dr -->
+    <div class="deal-card">
+      <div class="deal-hero">
+        <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/001_img_7605-edit-edit_800-scaled.jpg" alt="Yuma Dr after renovation - Indian Harbour Beach, FL" loading="lazy">
+        <span class="deal-badge">Family Refresh</span>
+      </div>
+      <div class="deal-content">
+        <h3>Yuma Dr</h3>
+        <div class="deal-city">Indian Harbour Beach, FL</div>
+        <div class="deal-scope">Split-level family home refresh: interior updates, pool area, and exterior improvements. Move-in ready for the next family.</div>
+        <div class="deal-ba">
+          <div>
+            <div class="deal-ba-label">Before</div>
+            <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/yuma_11.jpg" alt="Yuma Dr before - pool before renovation" loading="lazy">
+          </div>
+          <div>
+            <div class="deal-ba-label">After</div>
+            <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/001_img_7605-edit-edit_800-scaled.jpg" alt="Yuma Dr after - renovated exterior" loading="lazy">
+          </div>
+        </div>
+        <a href="/contact" class="deal-cta">Discuss Your Project</a>
+      </div>
+    </div>
+
+    <!-- Deal 5: Trotters Trail -->
+    <div class="deal-card">
+      <div class="deal-hero">
+        <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/001_dsc_0555-edit-2-edit-edit_125.jpg" alt="Trotters Trail after renovation - Cocoa, FL" loading="lazy">
+        <span class="deal-badge">Full Renovation</span>
+      </div>
+      <div class="deal-content">
+        <h3>Trotters Trail</h3>
+        <div class="deal-city">Cocoa, FL</div>
+        <div class="deal-scope">Complete renovation with exterior cleanup, landscaping, interior updates, and modern finishes throughout.</div>
+        <div class="deal-ba">
+          <div>
+            <div class="deal-ba-label">Before</div>
+            <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/trotters_11.jpg" alt="Trotters Trail before - original exterior" loading="lazy">
+          </div>
+          <div>
+            <div class="deal-ba-label">After</div>
+            <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/001_dsc_0555-edit-2-edit-edit_125.jpg" alt="Trotters Trail after - renovated exterior" loading="lazy">
+          </div>
+        </div>
+        <a href="/contact" class="deal-cta">Discuss Your Project</a>
+      </div>
+    </div>
+
+    <!-- Deal 6: Sunflower Dr -->
+    <div class="deal-card">
+      <div class="deal-hero">
+        <img src="https://goldenticketrealty.com/wp-content/uploads/2026/10/image1.png" alt="Sunflower Dr after renovation - Port St John, FL" loading="lazy">
+        <span class="deal-badge">Full Renovation</span>
+      </div>
+      <div class="deal-content">
+        <h3>Sunflower Dr</h3>
+        <div class="deal-city">Port St John, FL</div>
+        <div class="deal-scope">Complete gut renovation with new kitchen, updated bathrooms, new flooring, and modern finishes throughout.</div>
+        <a href="/contact" class="deal-cta">Discuss Your Project</a>
+      </div>
+    </div>
+
+  </div>
+</div>
