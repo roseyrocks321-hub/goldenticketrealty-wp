@@ -1,0 +1,300 @@
+<!-- GTR Portfolio Page — MOBILE STACK VERSION -->
+<style>
+.gtr-deals-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.gtr-deals-section h1 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+.gtr-deals-section .subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+.deals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+.deal-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.deal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.deal-hero {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+.deal-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.deal-card:hover .deal-hero img {
+  transform: scale(1.03);
+}
+.deal-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #d4a017;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.deal-content {
+  padding: 22px;
+}
+.deal-content h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+}
+.deal-city {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+.deal-scope {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+/* Before/After Stack */
+.ba-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.ba-stack-item {
+  text-align: center;
+}
+.ba-stack-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.ba-stack-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.deal-cta {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #fff !important;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  min-height: 44px;
+  line-height: 1;
+}
+.deal-cta:hover {
+  background: #333;
+  color: #fff !important;
+}
+
+/* MOBILE: stack before/after vertically */
+@media (max-width: 640px) {
+  .deals-grid {
+    grid-template-columns: 1fr;
+  }
+  .deal-hero {
+    height: 180px;
+  }
+  .ba-stack {
+    grid-template-columns: 1fr;
+  }
+  .ba-stack-item img {
+    height: 180px;
+  }
+  .gtr-deals-section h1 {
+    font-size: 1.8rem;
+  }
+  .deal-content {
+    padding: 18px;
+  }
+}
+</style>
+
+<div class="gtr-deals-section">
+<h1>Properties We've Transformed</h1>
+<p class="subtitle">Real before &amp; after photos from actual deals in Brevard County, FL. No stock imagery.</p>
+<div class="deals-grid">
+
+<!-- Deal 1: Nikomas Way -->
+<div class="deal-card">
+<div class="deal-hero">
+<img src="HERO_NIKOMAS" alt="Nikomas Way - Melbourne Beach, FL" loading="lazy">
+<span class="deal-badge">Full Reno</span>
+</div>
+<div class="deal-content">
+<h3>Nikomas Way</h3>
+<div class="deal-city">Melbourne Beach, FL</div>
+<div class="deal-scope">Complete interior renovation: exposed framing to finished great room, modern staircase, updated kitchen with island, and master suite with en-suite bath.</div>
+<div class="ba-stack">
+<div class="ba-stack-item">
+<div class="ba-stack-label">Before</div>
+<img src="BEFORE_NIKOMAS" alt="Before" loading="lazy">
+</div>
+<div class="ba-stack-item">
+<div class="ba-stack-label">After</div>
+<img src="AFTER_NIKOMAS" alt="After" loading="lazy">
+</div>
+</div>
+<a href="/contact" class="deal-cta">Discuss Your Project</a>
+</div>
+</div>
+
+<!-- Deal 2: Banana River Dr -->
+<div class="deal-card">
+<div class="deal-hero">
+<img src="HERO_BANANA" alt="Banana River Dr - Indian Harbour Beach, FL" loading="lazy">
+<span class="deal-badge">Kitchen &amp; Bath</span>
+</div>
+<div class="deal-content">
+<h3>Banana River Dr</h3>
+<div class="deal-city">Indian Harbour Beach, FL</div>
+<div class="deal-scope">Mid-century modern refresh: full kitchen renovation with new cabinetry and countertops, bathroom updates, and exterior curb appeal overhaul.</div>
+<div class="ba-stack">
+<div class="ba-stack-item">
+<div class="ba-stack-label">Before</div>
+<img src="BEFORE_BANANA" alt="Before" loading="lazy">
+</div>
+<div class="ba-stack-item">
+<div class="ba-stack-label">After</div>
+<img src="AFTER_BANANA" alt="After" loading="lazy">
+</div>
+</div>
+<a href="/contact" class="deal-cta">Discuss Your Project</a>
+</div>
+</div>
+
+<!-- Deal 3: Lakeridge Dr -->
+<div class="deal-card">
+<div class="deal-hero">
+<img src="HERO_LAKERIDGE" alt="Lakeridge Dr - Melbourne, FL" loading="lazy">
+<span class="deal-badge">Kitchen Flip</span>
+</div>
+<div class="deal-content">
+<h3>Lakeridge Dr</h3>
+<div class="deal-city">Melbourne, FL</div>
+<div class="deal-scope">Ranch-style kitchen and living area transformation: opened floor plan, new cabinetry, countertops, and modern finishes throughout.</div>
+<div class="ba-stack">
+<div class="ba-stack-item">
+<div class="ba-stack-label">Before</div>
+<img src="BEFORE_LAKERIDGE" alt="Before" loading="lazy">
+</div>
+<div class="ba-stack-item">
+<div class="ba-stack-label">After</div>
+<img src="AFTER_LAKERIDGE" alt="After" loading="lazy">
+</div>
+</div>
+<a href="/contact" class="deal-cta">Discuss Your Project</a>
+</div>
+</div>
+
+<!-- Deal 4: Yuma Dr -->
+<div class="deal-card">
+<div class="deal-hero">
+<img src="HERO_YUMA" alt="Yuma Dr - Indian Harbour Beach, FL" loading="lazy">
+<span class="deal-badge">Family Refresh</span>
+</div>
+<div class="deal-content">
+<h3>Yuma Dr</h3>
+<div class="deal-city">Indian Harbour Beach, FL</div>
+<div class="deal-scope">Split-level family home refresh: interior updates, pool area, and exterior improvements. Move-in ready for the next family.</div>
+<div class="ba-stack">
+<div class="ba-stack-item">
+<div class="ba-stack-label">Before</div>
+<img src="BEFORE_YUMA" alt="Before" loading="lazy">
+</div>
+<div class="ba-stack-item">
+<div class="ba-stack-label">After</div>
+<img src="AFTER_YUMA" alt="After" loading="lazy">
+</div>
+</div>
+<a href="/contact" class="deal-cta">Discuss Your Project</a>
+</div>
+</div>
+
+<!-- Deal 5: Trotters Trail -->
+<div class="deal-card">
+<div class="deal-hero">
+<img src="HERO_TROTTERS" alt="Trotters Trail - Cocoa, FL" loading="lazy">
+<span class="deal-badge">Full Renovation</span>
+</div>
+<div class="deal-content">
+<h3>Trotters Trail</h3>
+<div class="deal-city">Cocoa, FL</div>
+<div class="deal-scope">Complete renovation with exterior cleanup, landscaping, interior updates, and modern finishes throughout.</div>
+<div class="ba-stack">
+<div class="ba-stack-item">
+<div class="ba-stack-label">Before</div>
+<img src="BEFORE_TROTTERS" alt="Before" loading="lazy">
+</div>
+<div class="ba-stack-item">
+<div class="ba-stack-label">After</div>
+<img src="AFTER_TROTTERS" alt="After" loading="lazy">
+</div>
+</div>
+<a href="/contact" class="deal-cta">Discuss Your Project</a>
+</div>
+</div>
+
+<!-- Deal 6: Sunflower Dr -->
+<div class="deal-card">
+<div class="deal-hero">
+<img src="HERO_SUNFLOWER" alt="Sunflower Dr - Port St John, FL" loading="lazy">
+<span class="deal-badge">Full Renovation</span>
+</div>
+<div class="deal-content">
+<h3>Sunflower Dr</h3>
+<div class="deal-city">Port St John, FL</div>
+<div class="deal-scope">Complete gut renovation with new kitchen, updated bathrooms, new flooring, and modern finishes throughout.</div>
+<div class="ba-stack">
+<div class="ba-stack-item">
+<div class="ba-stack-label">Before</div>
+<div style="width:100%;height:140px;background:#e5e5e5;display:flex;align-items:center;justify-content:center;border-radius:6px;"><span style="color:#888;font-size:0.85rem;font-weight:500;">Photo coming soon</span></div>
+</div>
+<div class="ba-stack-item">
+<div class="ba-stack-label">After</div>
+<img src="AFTER_SUNFLOWER" alt="After" loading="lazy">
+</div>
+</div>
+<a href="/contact" class="deal-cta">Discuss Your Project</a>
+</div>
+</div>
+
+</div>
+</div>

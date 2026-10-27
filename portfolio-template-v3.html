@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Projects | Golden Ticket Realty</title>
+<style>
+:root {
+  --gold: #d4a017;
+  --dark: #1a1a1a;
+  --gray: #666;
+  --light-gray: #f5f5f5;
+  --white: #fff;
+  --border: #e0e0e0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* HEADER */
+.site-header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.site-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: var(--dark);
+}
+.site-header .lead {
+  font-size: 1.1rem;
+  color: var(--gray);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* FILTER BAR */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px 40px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--gray);
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--dark);
+}
+
+/* PROJECT GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+.project-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+.project-image {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  background: var(--light-gray);
+}
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+.project-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--gold);
+  color: var(--white);
+  padding: 4px 14px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.project-info {
+  padding: 20px;
+}
+.project-info h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--dark);
+}
+.project-city {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+.project-scope {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.project-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* DETAIL MODAL / SECTION */
+.project-detail {
+  display: none;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.project-detail.active {
+  display: block;
+}
+.detail-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.detail-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+.detail-header .detail-city {
+  color: var(--gray);
+  font-size: 1rem;
+}
+.detail-header .detail-desc {
+  max-width: 700px;
+  margin: 20px auto 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* BEFORE/AFTER GALLERY */
+.gallery-section {
+  margin-bottom: 40px;
+}
+.gallery-section h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray);
+}
+.ba-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.ba-item {
+  position: relative;
+}
+.ba-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.ba-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.7);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* PHOTO GRID (After shots) */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.photo-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+.photo-grid img:hover {
+  transform: scale(1.02);
+}
+
+/* CLOSE / BACK */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--dark);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.back-btn:hover {
+  background: #333;
+}
+
+/* CTA */
+.project-cta {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--light-gray);
+}
+.project-cta h3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+.project-cta p {
+  color: var(--gray);
+  margin-bottom: 24px;
+}
+.cta-button {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--gold);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.cta-button:hover {
+  background: #b88a14;
+}
+
+/* FOOTER */
+.site-footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid var(--border);
+}
+.site-footer p {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-image { height: 220px; }
+  .photo-grid { grid-template-columns: 1fr; }
+  .photo-grid img { height: 260px; }
+  .ba-gallery { grid-template-columns: 1fr; }
+  .ba-item img { height: 240px; }
+  .filter-bar { gap: 6px; }
+  .filter-btn { padding: 6px 14px; font-size: 0.8rem; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <h1>Properties We've Transformed</h1>
+  <p class="lead">Real before &amp; after photos from actual deals across Brevard County, Florida. Every project is a real home we bought, renovated, and sold — no stock imagery, no pretend flips.</p>
+</header>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <button class="filter-btn active">All Projects</button>
+  <button class="filter-btn">Full Renovation</button>
+  <button class="filter-btn">Kitchen &amp; Bath</button>
+  <button class="filter-btn">Exterior</button>
+</div>
+
+<!-- PROJECT GRID -->
+<section class="projects-grid" id="projectGrid">
+
+  <!-- Card 1: Nikomas Way -->
+  <article class="project-card" onclick="showDetail('nikomas')">
+    <div class="project-image">
+      <img src="HERO_NIKOMAS" alt="Nikomas Way - Melbourne Beach, FL" loading="lazy">
+      <span class="project-badge">Full Reno</span>
+    </div>
+    <div class="project-info">
+      <h3>Nikomas Way</h3>
+      <div class="project-city">Melbourne Beach, FL</div>
+      <div class="project-scope">Complete interior renovation: exposed framing to finished great room, modern staircase, updated kitchen with island, and master suite with en-suite bath.</div>
+      <div class="project-arrow">View Project →</div>
+    </div>
+  </article>
+
+  <!-- Card 2: Banana River Dr -->
+  <article class="project-card" onclick="showDetail('banana')">
+    <div class="project-image">
+      <img src="HERO_BANANA" alt="Banana River Dr - Indian Harbour Beach, FL" loading="lazy">
+      <span class="project-badge">Kitchen &amp; Bath</span>
+    </div>
+    <div class="project-info">
+      <h3>Banana River Dr</h3>
+      <div class="project-city">Indian Harbour Beach, FL</div>
+      <div class="project-scope">Mid-century modern refresh: full kitchen renovation with new cabinetry and countertops, bathroom updates, and exterior curb appeal overhaul.</div>
+      <div class="project-arrow">View Project →</div>
+    </div>
+  </article>
+
+  <!-- Card 3: Lakeridge Dr -->
+  <article class="project-card" onclick="showDetail('lakeridge')">
+    <div class="project-image">
+      <img src="HERO_LAKERIDGE" alt="Lakeridge Dr - Melbourne, FL" loading="lazy">
+      <span class="project-badge">Kitchen Flip</span>
+    </div>
+    <div class="project-info">
+      <h3>Lakeridge Dr</h3>
+      <div class="project-city">Melbourne, FL</div>
+      <div class="project-scope">Ranch-style kitchen and living area transformation: opened floor plan, new cabinetry, countertops, and modern finishes throughout.</div>
+      <div class="project-arrow">View Project →</div>
+    </div>
+  </article>
+
+  <!-- Card 4: Yuma Dr -->
+  <article class="project-card" onclick="showDetail('yuma')">
+    <div class="project-image">
+      <img src="HERO_YUMA" alt="Yuma Dr - Indian Harbour Beach, FL" loading="lazy">
+      <span class="project-badge">Family Refresh</span>
+    </div>
+    <div class="project-info">
+      <h3>Yuma Dr</h3>
+      <div class="project-city">Indian Harbour Beach, FL</div>
+      <div class="project-scope">Split-level family home refresh: interior updates, pool area, and exterior improvements. Move-in ready for the next family.</div>
+      <div class="project-arrow">View Project →</div>
+    </div>
+  </article>
+
+  <!-- Card 5: Trotters Trail -->
+  <article class="project-card" onclick="showDetail('trotters')">
+    <div class="project-image">
+      <img src="HERO_TROTTERS" alt="Trotters Trail - Cocoa, FL" loading="lazy">
+      <span class="project-badge">Full Renovation</span>
+    </div>
+    <div class="project-info">
+      <h3>Trotters Trail</h3>
+      <div class="project-city">Cocoa, FL</div>
+      <div class="project-scope">Complete renovation with exterior cleanup, landscaping, interior updates, and modern finishes throughout.</div>
+      <div class="project-arrow">View Project →</div>
+    </div>
+  </article>
+
+  <!-- Card 6: Sunflower Dr -->
+  <article class="project-card" onclick="showDetail('sunflower')">
+    <div class="project-image">
+      <img src="HERO_SUNFLOWER" alt="Sunflower Dr - Port St John, FL" loading="lazy">
+      <span class="project-badge">Full Renovation</span>
+    </div>
+    <div class="project-info">
+      <h3>Sunflower Dr</h3>
+      <div class="project-city">Port St John, FL</div>
+      <div class="project-scope">Complete gut renovation with new kitchen, updated bathrooms, new flooring, and modern finishes throughout.</div>
+      <div class="project-arrow">View Project →</div>
+    </div>
+  </article>
+
+</section>
+
+<!-- PROJECT DETAIL: NIKOMAS -->
+<section class="project-detail" id="detail-nikomas">
+  <button class="back-btn" onclick="backToGrid()">← Back to All Projects</button>
+  <div class="detail-header">
+    <h2>Nikomas Way</h2>
+    <div class="detail-city">Melbourne Beach, FL</div>
+    <div class="detail-desc">Our most extensive interior renovation to date. This property was taken down to the studs and rebuilt as a modern coastal retreat. We opened up the floor plan, installed a statement staircase with cable railing, built a chef's kitchen with waterfall island, and created a master suite that rivals luxury vacation homes. Every surface was replaced — flooring, trim, fixtures, and finishes.</div>
+  </div>
+  <div class="gallery-section">
+    <h3>Before &amp; After</h3>
+    <div class="ba-gallery">
+      <div class="ba-item"><span class="ba-label">Before</span><img src="BEFORE_NIKOMAS" alt="Before"></div>
+      <div class="ba-item"><span class="ba-label">After</span><img src="AFTER_NIKOMAS" alt="After"></div>
+    </div>
+  </div>
+  <div class="gallery-section">
+    <h3>Project Gallery</h3>
+    <div class="photo-grid">
+      <img src="GALLERY_NIKOMAS_1" alt="Nikomas Way interior">
+      <img src="GALLERY_NIKOMAS_2" alt="Nikomas Way kitchen">
+      <img src="GALLERY_NIKOMAS_3" alt="Nikomas Way exterior">
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT DETAIL: BANANA RIVER -->
+<section class="project-detail" id="detail-banana">
+  <button class="back-btn" onclick="backToGrid()">← Back to All Projects</button>
+  <div class="detail-header">
+    <h2>Banana River Dr</h2>
+    <div class="detail-city">Indian Harbour Beach, FL</div>
+    <div class="detail-desc">A mid-century modern gem that needed a full refresh. We gutted the original kitchen and replaced it with clean white cabinetry, quartz countertops, and stainless appliances. Both bathrooms were fully renovated with modern tile and fixtures. The exterior got a complete curb appeal overhaul with new landscaping, paint, and a refreshed entryway.</div>
+  </div>
+  <div class="gallery-section">
+    <h3>Before &amp; After</h3>
+    <div class="ba-gallery">
+      <div class="ba-item"><span class="ba-label">Before</span><img src="BEFORE_BANANA" alt="Before"></div>
+      <div class="ba-item"><span class="ba-label">After</span><img src="AFTER_BANANA" alt="After"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT DETAIL: LAKERIDGE -->
+<section class="project-detail" id="detail-lakeridge">
+  <button class="back-btn" onclick="backToGrid()">← Back to All Projects</button>
+  <div class="detail-header">
+    <h2>Lakeridge Dr</h2>
+    <div class="detail-city">Melbourne, FL</div>
+    <div class="detail-desc">This ranch-style home had great bones but a closed-off layout. We opened the kitchen into the living area, creating an entertainer's dream space. New cabinetry, countertops, flooring, and lighting transformed the heart of the home. The result is a bright, airy, modern ranch that feels twice as spacious.</div>
+  </div>
+  <div class="gallery-section">
+    <h3>Before &amp; After</h3>
+    <div class="ba-gallery">
+      <div class="ba-item"><span class="ba-label">Before</span><img src="BEFORE_LAKERIDGE" alt="Before"></div>
+      <div class="ba-item"><span class="ba-label">After</span><img src="AFTER_LAKERIDGE" alt="After"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT DETAIL: YUMA -->
+<section class="project-detail" id="detail-yuma">
+  <button class="back-btn" onclick="backToGrid()">← Back to All Projects</button>
+  <div class="detail-header">
+    <h2>Yuma Dr</h2>
+    <div class="detail-city">Indian Harbour Beach, FL</div>
+    <div class="detail-desc">A split-level family home that needed updating throughout. We refreshed every interior surface, updated the pool area for summer fun, and improved the exterior with new paint and landscaping. The home is now move-in ready for the next family to make memories.</div>
+  </div>
+  <div class="gallery-section">
+    <h3>Before &amp; After</h3>
+    <div class="ba-gallery">
+      <div class="ba-item"><span class="ba-label">Before</span><img src="BEFORE_YUMA" alt="Before"></div>
+      <div class="ba-item"><span class="ba-label">After</span><img src="AFTER_YUMA" alt="After"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT DETAIL: TROTTERS -->
+<section class="project-detail" id="detail-trotters">
+  <button class="back-btn" onclick="backToGrid()">← Back to All Projects</button>
+  <div class="detail-header">
+    <h2>Trotters Trail</h2>
+    <div class="detail-city">Cocoa, FL</div>
+    <div class="detail-desc">This property needed everything from the ground up. We handled exterior cleanup, installed new landscaping, gutted and rebuilt the interior with modern finishes, and brought the home up to current standards. The transformation from neglected to neighborhood standout was dramatic.</div>
+  </div>
+  <div class="gallery-section">
+    <h3>Before &amp; After</h3>
+    <div class="ba-gallery">
+      <div class="ba-item"><span class="ba-label">Before</span><img src="BEFORE_TROTTERS" alt="Before"></div>
+      <div class="ba-item"><span class="ba-label">After</span><img src="AFTER_TROTTERS" alt="After"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT DETAIL: SUNFLOWER -->
+<section class="project-detail" id="detail-sunflower">
+  <button class="back-btn" onclick="backToGrid()">← Back to All Projects</button>
+  <div class="detail-header">
+    <h2>Sunflower Dr</h2>
+    <div class="detail-city">Port St John, FL</div>
+    <div class="detail-desc">A complete gut renovation that transformed this property from outdated to outstanding. We installed a brand new kitchen with modern cabinetry and appliances, updated both bathrooms, laid new flooring throughout, and applied fresh paint and finishes in every room.</div>
+  </div>
+  <div class="gallery-section">
+    <h3>Before &amp; After</h3>
+    <div class="ba-gallery">
+      <div class="ba-item"><span class="ba-label">Before</span><div style="width:100%;height:300px;background:#e5e5e5;display:flex;align-items:center;justify-content:center;border-radius:8px;"><span style="color:#888;font-size:0.9rem;font-weight:500;">Before photo coming soon</span></div></div>
+      <div class="ba-item"><span class="ba-label">After</span><img src="AFTER_SUNFLOWER" alt="After"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="project-cta">
+  <h3>Have a project in mind?</h3>
+  <p>We buy houses in any condition across Brevard County. Get a fair cash offer within 24 hours.</p>
+  <a href="/contact" class="cta-button">Get Your Cash Offer</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>Golden Ticket Realty • 3682 N Wickham Rd., Ste B1-271 • Melbourne, FL 32935</p>
+  <p style="margin-top:8px;">&copy; 2026 Golden Ticket Realty. All rights reserved.</p>
+</footer>
+
+<script>
+function showDetail(id) {
+  document.getElementById('projectGrid').style.display = 'none';
+  document.querySelector('.filter-bar').style.display = 'none';
+  document.querySelector('.site-header').style.display = 'none';
+  document.getElementById('detail-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+function backToGrid() {
+  document.querySelectorAll('.project-detail').forEach(el => el.classList.remove('active'));
+  document.getElementById('projectGrid').style.display = 'grid';
+  document.querySelector('.filter-bar').style.display = 'flex';
+  document.querySelector('.site-header').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
